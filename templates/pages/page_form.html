@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+<div class="card">
+    {% if object %}
+        <h2>Editar page</h2>
+    {% else %}
+        <h2>Crear page</h2>
+    {% endif %}
+
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.media }}
+        {{ form.as_p }}
+        <button class="boton" type="submit">Guardar</button>
+        <a class="boton secundario" href="{% url 'page_list' %}">Cancelar</a>
+    </form>
+</div>
+{% endblock %}

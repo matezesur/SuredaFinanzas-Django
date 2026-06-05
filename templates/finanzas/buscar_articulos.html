@@ -1,0 +1,26 @@
+{% extends 'finanzas/base.html' %}
+
+{% block contenido %}
+<div class="card">
+    <h2>Buscar artículos financieros</h2>
+    <form method="get">
+        {{ formulario.as_p }}
+        <button class="boton" type="submit">Buscar</button>
+    </form>
+</div>
+
+{% if busqueda %}
+    <div class="card">
+        <h3>Resultados para: {{ busqueda }}</h3>
+        {% if resultados %}
+            {% for articulo in resultados %}
+                <h4>{{ articulo.titulo }}</h4>
+                <p><strong>Categoría:</strong> {{ articulo.categoria }}</p>
+                <p>{{ articulo.contenido }}</p>
+            {% endfor %}
+        {% else %}
+            <p>No se encontraron artículos con esa búsqueda.</p>
+        {% endif %}
+    </div>
+{% endif %}
+{% endblock %}

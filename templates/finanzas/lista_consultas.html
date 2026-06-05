@@ -1,0 +1,24 @@
+{% extends 'finanzas/base.html' %}
+
+{% block contenido %}
+<div class="card">
+    <h2>Consultas recibidas</h2>
+    <p><a class="boton" href="{% url 'crear_consulta' %}">Cargar nueva consulta</a></p>
+</div>
+
+{% if consultas %}
+    {% for consulta in consultas %}
+        <div class="card">
+            <h3>{{ consulta.nombre }}</h3>
+            <p><strong>Email:</strong> {{ consulta.email }}</p>
+            <p><strong>Teléfono:</strong> {{ consulta.telefono }}</p>
+            <p><strong>Fecha:</strong> {{ consulta.fecha_consulta }}</p>
+            <p>{{ consulta.mensaje }}</p>
+        </div>
+    {% endfor %}
+{% else %}
+    <div class="card">
+        <p>No hay consultas cargadas.</p>
+    </div>
+{% endif %}
+{% endblock %}

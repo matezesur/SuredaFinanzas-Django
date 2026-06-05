@@ -1,0 +1,22 @@
+{% extends 'finanzas/base.html' %}
+
+{% block contenido %}
+<div class="card">
+    <h2>Servicios financieros</h2>
+    <p><a class="boton" href="{% url 'crear_servicio' %}">Cargar nuevo servicio</a></p>
+</div>
+
+{% if servicios %}
+    {% for servicio in servicios %}
+        <div class="card">
+            <h3>{{ servicio.nombre }}</h3>
+            <p><strong>Tipo:</strong> {{ servicio.tipo }}</p>
+            <p>{{ servicio.descripcion }}</p>
+        </div>
+    {% endfor %}
+{% else %}
+    <div class="card">
+        <p>No hay servicios cargados.</p>
+    </div>
+{% endif %}
+{% endblock %}

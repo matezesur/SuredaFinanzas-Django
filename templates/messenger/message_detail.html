@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+<div class="card">
+    <h2>{{ message.subject }}</h2>
+    <p class="meta">De {{ message.sender.username }} para {{ message.recipient.username }} - {{ message.created_at }}</p>
+    <p>{{ message.body|linebreaks }}</p>
+    <a class="boton secundario" href="{% url 'inbox' %}">Volver a mensajes</a>
+</div>
+{% endblock %}

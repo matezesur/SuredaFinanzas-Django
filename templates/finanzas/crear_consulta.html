@@ -1,0 +1,12 @@
+{% extends 'finanzas/base.html' %}
+
+{% block contenido %}
+<div class="card">
+    <h2>Cargar consulta de cliente</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ formulario.as_p }}
+        <button class="boton" type="submit">Guardar consulta</button>
+    </form>
+</div>
+{% endblock %}

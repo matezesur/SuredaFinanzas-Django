@@ -1,0 +1,23 @@
+{% extends 'finanzas/base.html' %}
+
+{% block contenido %}
+<div class="card">
+    <h2>Artículos financieros</h2>
+    <p><a class="boton" href="{% url 'crear_articulo' %}">Cargar nuevo artículo</a></p>
+</div>
+
+{% if articulos %}
+    {% for articulo in articulos %}
+        <div class="card">
+            <h3>{{ articulo.titulo }}</h3>
+            <p><strong>Categoría:</strong> {{ articulo.categoria }}</p>
+            <p><strong>Fecha:</strong> {{ articulo.fecha_publicacion }}</p>
+            <p>{{ articulo.contenido }}</p>
+        </div>
+    {% endfor %}
+{% else %}
+    <div class="card">
+        <p>No hay artículos cargados.</p>
+    </div>
+{% endif %}
+{% endblock %}

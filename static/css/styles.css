@@ -1,0 +1,31 @@
+* { box-sizing: border-box; }
+body { margin: 0; font-family: Arial, Helvetica, sans-serif; background: #f4f6f8; color: #222; }
+.container { width: 88%; max-width: 1120px; margin: 0 auto; }
+.site-header { background: #0f172a; color: white; padding: 22px 0; }
+.header-content { display: flex; justify-content: space-between; gap: 25px; align-items: center; flex-wrap: wrap; }
+.site-header h1 { margin: 0; font-size: 28px; }
+.site-header p { margin: 6px 0 0; color: #dbeafe; }
+.navbar { display: flex; align-items: center; gap: 13px; flex-wrap: wrap; }
+.navbar a, .logout-form button { color: white; background: transparent; border: 0; text-decoration: none; font-size: 15px; cursor: pointer; padding: 0; font-family: inherit; }
+.navbar a:hover, .logout-form button:hover { text-decoration: underline; }
+.logout-form { margin: 0; }
+.main-content { padding: 32px 0 48px; }
+.card { background: white; border-radius: 10px; padding: 22px; margin-bottom: 20px; box-shadow: 0 2px 10px rgba(15, 23, 42, .08); }
+.card h2, .card h3 { margin-top: 0; }
+.actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px; }
+.boton, button.boton { display: inline-block; background: #0f172a; color: white; padding: 10px 14px; border-radius: 6px; text-decoration: none; border: 0; cursor: pointer; font-size: 15px; }
+.boton.secundario { background: #475569; }
+.boton.danger { background: #b91c1c; }
+.boton:hover { opacity: .92; }
+form p { margin-bottom: 15px; }
+input, textarea, select { width: 100%; padding: 9px; border: 1px solid #cbd5e1; border-radius: 5px; }
+.helptext { display: block; color: #64748b; font-size: 13px; margin-top: 4px; }
+.errorlist { color: #b91c1c; }
+.page-image, .avatar { max-width: 100%; border-radius: 10px; margin: 15px 0; }
+.avatar { width: 140px; height: 140px; object-fit: cover; }
+.meta { color: #64748b; font-size: 14px; }
+.messages { margin-bottom: 18px; }
+.message { padding: 12px 14px; border-radius: 8px; background: #e0f2fe; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; }
+.site-footer { text-align: center; color: #64748b; padding: 26px; }
+@media (max-width: 720px) { .header-content { align-items: flex-start; } }

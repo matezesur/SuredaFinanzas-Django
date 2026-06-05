@@ -1,0 +1,12 @@
+{% extends 'finanzas/base.html' %}
+
+{% block contenido %}
+<div class="card">
+    <h2>Cargar artículo financiero</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ formulario.as_p }}
+        <button class="boton" type="submit">Guardar artículo</button>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+<div class="card">
+    <h2>Borrar page</h2>
+    <p>¿Confirmás que querés borrar la página <strong>{{ object.titulo }}</strong>?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button class="boton danger" type="submit">Sí, borrar</button>
+        <a class="boton secundario" href="{% url 'page_detail' object.pk %}">Cancelar</a>
+    </form>
+</div>
+{% endblock %}

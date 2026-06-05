@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+<div class="card">
+    <h2>Blogs</h2>
+    <p>Listado de páginas publicadas en el sitio.</p>
+    <form method="get">
+        {{ form.as_p }}
+        <button class="boton" type="submit">Buscar</button>
+        {% if user.is_authenticated %}
+            <a class="boton secundario" href="{% url 'page_create' %}">Crear nueva page</a>
+        {% endif %}
+    </form>
+</div>
+
+{% if pages %}
+    {% for page in pages %}
+        <article class="card">
+            <h3>{{ page.titulo }}</h3>
+            <p class="meta">{{ page.categoria }} | {{ page.fecha_publicacion }}</p>
+            <p><strong>{{ page.subtitulo }}</strong></p>
+            <p>{{ page.contenido|striptags|truncatewords:35 }}</p>
+            <div class="actions">
+                <a class="boton" href="{% url 'page_detail' page.pk %}">Leer más</a>
+                {% if user.is_authenticated %}
+                    <a class="boton secundario" href="{% url 'page_update' page.pk %}">Editar</a>
+                    <a class="boton danger" href="{% url 'page_delete' page.pk %}">Borrar</a>
+                {% endif %}
+            </div>
+        </article>
+    {% endfor %}
+{% else %}
+    <div class="card">
+        {% if busqueda %}
+            <p>No se encontraron páginas para esa búsqueda.</p>
+        {% else %}
+            <p>No hay páginas aún.</p>
+        {% endif %}
+    </div>
+{% endif %}
+{% endblock %}

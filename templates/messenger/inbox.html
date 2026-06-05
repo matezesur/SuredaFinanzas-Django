@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+<div class="card">
+    <h2>Mensajes</h2>
+    <p>Desde esta sección los usuarios registrados pueden comunicarse entre sí.</p>
+    <a class="boton" href="{% url 'send_message' %}">Enviar mensaje</a>
+</div>
+
+<div class="card">
+    <h3>Recibidos</h3>
+    {% if received %}
+        {% for message in received %}
+            <p>
+                <a href="{% url 'message_detail' message.pk %}"><strong>{{ message.subject }}</strong></a>
+                <span class="meta">de {{ message.sender.username }} - {{ message.created_at }}</span>
+                {% if not message.read %}<strong>Nuevo</strong>{% endif %}
+            </p>
+        {% endfor %}
+    {% else %}
+        <p>No recibiste mensajes todavía.</p>
+    {% endif %}
+</div>
+
+<div class="card">
+    <h3>Enviados recientes</h3>
+    {% if sent %}
+        {% for message in sent %}
+            <p>
+                <a href="{% url 'message_detail' message.pk %}"><strong>{{ message.subject }}</strong></a>
+                <span class="meta">para {{ message.recipient.username }} - {{ message.created_at }}</span>
+            </p>
+        {% endfor %}
+    {% else %}
+        <p>No enviaste mensajes todavía.</p>
+    {% endif %}
+</div>
+{% endblock %}
